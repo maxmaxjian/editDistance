@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 class solution {
   public:
@@ -18,7 +19,7 @@ class solution {
             if (s1[i1] == s2[i2])
                 result = distFunc(s1, i1-1, s2, i2-1);
             else {
-                result = std::min(std::min(distFunc(s1,i1-1,s2,i2), distFunc(s1,i1,s2,i2-1)),distFunc(s1,i1-1,s2,i2-1))+1;
+                result = std::min({distFunc(s1,i1-1,s2,i2), distFunc(s1,i1,s2,i2-1), distFunc(s1,i1-1,s2,i2-1)})+1;
             }
         }
         return result;
